@@ -1,1 +1,63 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная - IndexApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0,0,0,0.2);
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            text-align: center;
+        }
+        .content-box {
+            background-color: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать в IndexApp</h1>
+    </header>
+    <main>
+        <div class="content-box">
+            <p>Вы успешно зарегистрировались!</p>
+            <a href="/personalAccount/">Перейти в личный кабинет</a>
+        </div>
+    </main>
+</body>
+</html>

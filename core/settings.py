@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,8 @@ SECRET_KEY = "django-insecure-95^sa_(cpe5oi^lp*ljw+a4vdt!au$5r*1o!%w6_@@_xdmx4md
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,0.0.0.0,5.180.174.193").split(",")
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "http://localhost,http://127.0.0.1,http://0.0.0.0,https://5.180.174.193").split(",")
 
 
 # Application definition
@@ -42,8 +44,10 @@ INSTALLED_APPS = [
     "payments",
     "personalAccount",
     "authApp",
+    "users",
 ]
-
+AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_REDIRECT_URL = '/personalAccount/'
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -120,6 +124,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Папка для статических файлов после collectstatic
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

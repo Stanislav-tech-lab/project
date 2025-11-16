@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body { margin: 0; font-family: Arial; }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-side {
+            width: 50%;
+            background: rgba(128, 0, 255, 0.5);
+            animation: slide 0.7s ease-out;
+        }
+
+        @keyframes slide {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        .right-side {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f4f4;
+        }
+
+        .form-box {
+            width: 350px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            animation: fade 0.4s ease;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 18px;
+            border: none;
+            background: #6200ea;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #4b00c4;
+        }
+
+        .switch {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .switch a {
+            color: #6200ea;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left-side"></div>
+
+    <div class="right-side">
+
+        {% if mode == 'register' %}
+        <!-- ======================= РЕГИСТРАЦИЯ ======================= -->
+        <div class="form-box">
+            <h2>Регистрация</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="mode" value="register">
+
+                <input class="form-control" name="email" type="email" placeholder="Email" required>
+                <input class="form-control" name="password" type="password" placeholder="Пароль" required>
+                <input class="form-control" name="repeat_password" type="password" placeholder="Повторите пароль" required>
+
+                <button class="btn">Создать аккаунт</button>
+
+                <div class="switch">
+                    <a href="?mode=login">У меня уже есть аккаунт</a>
+                </div>
+            </form>
+        </div>
+
+        {% else %}
+        <!-- ======================= ЛОГИН ======================= -->
+        <div class="form-box">
+            <h2>Вход</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="mode" value="login">
+
+                <input class="form-control" name="email" type="email" placeholder="Email" required>
+                <input class="form-control" name="password" type="password" placeholder="Пароль" required>
+
+                <button class="btn">Войти</button>
+
+                <div class="switch">
+                    <a href="?mode=register">Создать аккаунт</a>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+</body>
+</html>

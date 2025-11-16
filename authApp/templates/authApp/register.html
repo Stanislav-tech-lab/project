@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- Левая фиолетовая часть -->
+    <div class="left-side"></div>
+
+    <!-- Правая часть с формой -->
+    <div class="right-side">
+        <div class="form-box">
+            <h2>Регистрация</h2>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn-submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

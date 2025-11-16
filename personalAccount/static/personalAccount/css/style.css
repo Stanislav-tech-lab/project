@@ -1,0 +1,611 @@
+:root {
+    --primary-color: #4F46E5;
+    --secondary-color: #6366F1;
+    --accent-color: #8B5CF6;
+    --text-color: #1F2937;
+    --background-color: #F3F4F6;
+    --light-gray: #E5E7EB;
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #E5E7EB;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#vanta-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    animation: fadeIn 2s ease-in-out;
+    backdrop-filter: blur(2.5px);
+}
+
+.dashboard-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.sidebar {
+    width: 220px;
+    padding: 20px;
+    background-color: var(--primary-color);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 80px;
+}
+
+.sidebar-menu li {
+    font-size: 1.2rem;
+    color: var(--white);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px 0;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.sidebar-menu li.active {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.sidebar-menu li:hover {
+    background-color: #7C3AED;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 30px;
+    border-radius: 20px;
+    width: 60%;
+}
+
+.profile-block {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 350px;
+}
+
+.profile .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.subscription-expired {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-logout {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-logout:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.content {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tracker {
+    width: 300px;
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    margin-left: 20px;
+}
+
+.tracker h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.tracker-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tracker-list li {
+    background-color: var(--white);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+.activity-table th, .activity-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--text-color);
+}
+
+
+
+.about-button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Центровка таблицы в родительском блоке */
+.activity-table {
+    display: flex;
+    justify-content: center;
+}
+
+.activity-table table {
+    width: 80%; /* Ширина таблицы меньше ширины родительского блока */
+    margin: 0 auto;
+}
+
+/* Стиль для блока трекера, аналогичный профилю */
+.tracker-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.tracker-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.activity-header{
+    color: var(--text-color);
+    text-align: center;
+}
+
+.profile-info{
+    color: var(--text-color);
+}
+
+/* Контейнер для профиля и блока прогресса */
+.profile-container {
+    display: flex;
+    gap: 20px; /* Пространство между плитками */
+    margin-bottom: 20px;
+}
+
+/* Блок с прогресс-баром рядом с профилем */
+.progress-block {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: var(--text-color)
+}
+
+.progress-block h3 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* Одинаковая ширина для блока профиля и блока прогресса */
+.profile-block,
+.progress-block {
+    width: 350px; /* Убедитесь, что оба блока имеют одинаковую ширину */
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Прогресс-блок с декоративной иконкой и анимацией */
+.progress-block h3 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-block h3::before {
+    content: "🎉"; /* Иконка перед заголовком */
+    font-size: 1.5rem;
+}
+
+/* Контейнер прогресс-бара с градиентом и более ярким фоном */
+.progress-bar-container {
+    width: 100%;
+    background-color: #E0E7FF; /* Более светлый фон */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    height: 20px;
+    background: linear-gradient(90deg, #4F46E5, #8B5CF6); /* Градиент цвета */
+    color: var(--white);
+    text-align: center;
+    border-radius: 10px;
+    transition: width 0.6s ease-in-out;
+    animation: loadProgress 1.5s ease forwards;
+}
+
+/* Анимация для прогресс-бара */
+@keyframes loadProgress {
+    from {
+        width: 0;
+    }
+    to {
+        width: 50%; /* Пример начальной ширины, можно обновлять динамически */
+    }
+}
+
+/* Дополнительные декоративные стили для текста */
+.progress-block p {
+    color: #6B7280;
+    font-style: italic;
+}
+
+/* Базовые стили */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+/* Мобильное меню */
+.sidebar {
+    transition: transform 0.3s ease;
+}
+
+.sidebar.sidebar-open {
+    transform: translateX(0);
+}
+
+.close-menu{
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .close-menu{
+        display: block;
+    }
+
+    .dashboard-container {
+        flex-direction: column;
+        padding: 20px;
+        margin-top: 70px;
+    }
+
+    .dashboard-background{
+        position: unset;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: -220px;
+        width: 200px;
+        height: 100%;
+        background-color: var(--primary-color);
+        transform: translateX(-100%);
+        padding-top: 60px;
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar-menu li {
+        padding: 10px 0;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-content, .profile-container, .tracker-block {
+        width: 100%;
+        padding: 0;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .profile-block,
+    .progress-block,
+    .tracker-block {
+        width: 90%;
+        margin: 10px auto;
+    }
+    /* Упрощение таблицы */
+    .activity-table table {
+        width: 100%;
+    }
+
+    .activity-header {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+/* Адаптация под очень маленькие экраны */
+@media (max-width: 480px) {
+
+    .close-menu{
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    .sidebar-menu li {
+        font-size: 0.9rem;
+    }
+
+    .profile-info h3,
+    .progress-block h3 {
+        font-size: 1.1rem;
+    }
+
+    .btn-logout {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .progress-bar {
+        height: 16px;
+    }
+
+    .progress-block p {
+        font-size: 0.9rem;
+    }
+
+    .tracker-list li {
+        font-size: 0.8rem;
+    }
+
+    .tracker{
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .content{
+        margin-bottom: 20px
+    }
+}
+
+
+/* Скролл для таблицы действий */
+.activity-table {
+    max-height: 300px; /* Ограниченная высота для блока таблицы */
+    overflow-y: auto;
+    display: block;
+    padding-right: 5px; /* Добавлен отступ для скролла */
+}
+
+/* Скролл для трекера опросов */
+.tracker {
+    max-height: 300px; /* Ограниченная высота для блока опросов */
+    overflow-y: auto;
+}
+
+/* Базовая настройка скрытого меню для мобильных */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Показать кнопку меню на мобильных */
+    }
+
+
+    .close-menu{
+        display: block;
+    }
+
+    .sidebar-menu li {
+        padding: 10px 0; /* Уменьшение вертикального отступа */
+        font-size: 1rem; /* Уменьшение размера шрифта */
+        color: var(--white);
+        cursor: pointer;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--primary-color);
+        transform: translateY(-100%);
+        transition: transform 0.4s ease, opacity 0.3s;
+        z-index: 20;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 90% 0 0 0;
+    }
+
+    /* Анимация появления меню сверху */
+    .sidebar.sidebar-open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* Кнопка для закрытия меню */
+    .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        color: var(--white);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 50%; /* Полная ширина для центрации */
+        text-align: center;
+    }
+
+    .sidebar-menu li {
+        padding: 15px 0;
+        font-size: 1.5rem;
+        color: var(--white);
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Блокировка прокрутки фона при открытом меню */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* Обновления для основного контента при открытом меню */
+    .dashboard-container {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 1580px) {
+    /* Для экранов ноутбуков и небольших устройств */
+    .logo {
+        position: fixed; /* Фиксируем логотип на экране */
+        top: 15px;
+        left: 15px;
+        font-size: 1.8rem; /* Уменьшенный размер для ноутбуков */
+        z-index: 25;
+    }
+    .dashboard-background {
+        padding-top: 20px; /* Добавляем нижний отступ для меню */
+    }
+
+}

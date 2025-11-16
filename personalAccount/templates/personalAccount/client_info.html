@@ -1,0 +1,120 @@
+
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'personalAccount/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div id="vanta-background"></div>
+
+<div class="dashboard-background">
+    <div class="logo">self.io</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button> <!-- Кнопка гамбургера для мобильного меню -->
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <button class="close-menu" onclick="toggleMenu()">✖</button> <!-- Кнопка для закрытия меню -->
+            <ul class="sidebar-menu">
+                <li onclick="showContent('Main', this)" class="active">Главная</li>
+                <li onclick="showContent('Payment', this)">Оплата</li>
+                <li onclick="showContent('Settings', this)">Настройки</li>
+                <li onclick="showContent('Requests', this)">Запросы</li>
+            </ul>
+        </aside>
+
+        <div class="main-content">
+    <div class="profile-container">
+        <!-- Плитка с профилем -->
+        <div class="profile-block">
+            <div class="profile">
+                <img src="/static/personalAccount/images/img.png" alt="Avatar" class="avatar">
+                <div class="profile-info">
+                    <h3>jaba228</h3>
+                    <p>jaba228@gmail.com</p>
+                    <p class="subscription-expired">Подписка истекла в пятницу</p>
+                </div>
+                <button class="btn-logout">Выйти</button>
+            </div>
+        </div>
+
+        <!-- Плитка с прогресс-баром -->
+        <div class="progress-block">
+            <h3>Вы с нами уже 50 дней!</h3>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 50%;">50%</div> <!-- ширину можно динамически обновлять -->
+            </div>
+            <p>Осталось 50 дней до большого юбилея!</p>
+        </div>
+    </div>
+
+    <main class="content">
+        <section id="dynamic-content">
+            <div class="content-block activity-view">
+                <h2 class="activity-header">Последние действия</h2>
+                <div class="activity-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Запрос</th>
+                                <th>Тип</th>
+                                <th>Время</th>
+                                <th>Детали</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Запрос 1</td>
+                                <td>Тип A</td>
+                                <td>12:00</td>
+                                <td><button class="about-button">Подробнее</button></td>
+                            </tr>
+                            <tr>
+                                <td>Запрос 2</td>
+                                <td>Тип B</td>
+                                <td>13:00</td>
+                                <td><button class="about-button">Подробнее</button></td>
+                            </tr>
+                            <tr>
+                                <td>Запрос 3</td>
+                                <td>Тип C</td>
+                                <td>14:00</td>
+                                <td><button class="about-button">Подробнее</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+        <div class="tracker-block">
+            <aside class="tracker">
+                <h2>Трекер опросов</h2>
+                <ul class="tracker-list">
+                    <li>Опрос 1 - Пройден</li>
+                    <li>Опрос 2 - Не пройден</li>
+                    <li>Опрос 3 - Пройден</li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block footerBlock %}{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    function showContent(section, element) {
+        // Функция для переключения активной вкладки и показа контента
+        document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
+        element.classList.add('active');
+    }
+</script>
+
+{% endblock %}
