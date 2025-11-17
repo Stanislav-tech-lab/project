@@ -1,63 +1,104 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Главная - IndexApp</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #fff;
-        }
-        header {
-            padding: 20px;
-            text-align: center;
-            background-color: rgba(0,0,0,0.2);
-        }
-        h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 80px);
-            text-align: center;
-        }
-        .content-box {
-            background-color: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-        }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #2575fc;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        a:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static 'indexApp/css/style.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Добро пожаловать в IndexApp</h1>
-    </header>
-    <main>
-        <div class="content-box">
-            <p>Вы успешно зарегистрировались!</p>
-            <a href="/personalAccount/">Перейти в личный кабинет</a>
+
+<!-- Первая секция с шторкой -->
+<!-- Первая секция с шторкой -->
+<div class="section section1">
+    <!-- Шторка / Header -->
+    <header class="top-bar">
+        <div class="logo-block">
+            <img src="{% static 'indexApp/images/logo.png' %}" alt="Логотип" class="logo">
+            <span class="company-name">Self.io</span>
         </div>
-    </main>
+        <div class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="menu-buttons" id="menu-buttons">
+            <button onclick="window.location.href='/login/'">Войти</button>
+            <button onclick="window.location.href='/register/'">Регистрация</button>
+        </div>
+    </header>
+
+    <!-- Контент первой секции -->
+    <div class="content">
+        <h1>Добро пожаловать!</h1>
+        <p>Описание первой секции.</p>
+    </div>
+
+    <!-- Стрелка вниз -->
+    <div class="scroll-arrow">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+    </div>
+</div>
+
+
+<!-- Вторая секция -->
+<div class="section section2">
+    <div class="content">
+        <h1>Вторая секция</h1>
+        <p>Описание второй секции.</p>
+    </div>
+    <div class="scroll-arrow">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+    </div>
+</div>
+
+<!-- Третья секция -->
+<div class="section section3">
+    <div class="content">
+        <h1>Третья секция</h1>
+        <p>Описание третьей секции.</p>
+    </div>
+</div>
+
+<!-- JS для стрелок и бургер-меню -->
+<script>
+    // Скролл стрелок
+    const arrows = document.querySelectorAll('.scroll-arrow');
+    arrows.forEach((arrow) => {
+        arrow.addEventListener('click', () => {
+            window.scrollBy({
+                top: window.innerHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Появление/исчезновение стрелок
+    const sections = document.querySelectorAll('.section');
+    window.addEventListener('scroll', () => {
+        sections.forEach((sec) => {
+            const arrow = sec.querySelector('.scroll-arrow');
+            if(!arrow) return;
+            const rect = sec.getBoundingClientRect();
+            arrow.style.opacity = (rect.top <= 0 && rect.bottom >= window.innerHeight / 2) ? '1' : '0';
+        });
+    });
+
+    // Бургер-меню
+    const burger = document.getElementById('burger-menu');
+    const menuButtons = document.getElementById('menu-buttons');
+    burger.addEventListener('click', () => {
+        menuButtons.classList.toggle('active');
+    });
+</script>
+
 </body>
 </html>
