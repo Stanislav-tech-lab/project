@@ -1,0 +1,70 @@
+/* базовые */
+* { box-sizing: border-box; }
+body { margin:0; font-family: Inter, Arial, sans-serif; background:#f7f7fb; color:#111; }
+
+/* контейнер */
+.container { display:flex; height:100vh; overflow:hidden; }
+
+/* левая часть — фиолет, полупрозрачный и анимируется */
+.left-side {
+  width:50%;
+  background: linear-gradient(180deg, #0d47a1,#0d47a1);
+  transform: translateX(-120%);
+  opacity:0;
+  animation: slideIn 900ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+@keyframes slideIn {
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* правая часть — форма */
+.right-side { width:50%; display:flex; align-items:center; justify-content:center; background:transparent;}
+
+/* карточка формы */
+.form-box {
+  width:360px; padding:28px; border-radius:14px;
+  background:#fff; box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+  position: relative;
+}
+
+/* форма блоки (т.е. register/login) — только один видимый */
+.form-block { display:none; opacity:0; transform: translateY(8px); transition: all .28s ease; }
+.form-block.active { display:block; opacity:1; transform: translateY(0); }
+
+/* заголовок и поля */
+.form-block h2 { margin:0 0 16px; font-size:20px; color:#333; text-align:center; }
+.field { margin-bottom:12px; }
+.field input {
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid #e6e9ef;
+  font-size:14px; background:#fbfcff;
+}
+.field input:focus { outline:none; border-color:#c7c9ff; box-shadow:0 6px 20px rgba(99,102,241,0.12); }
+
+/* ошибки */
+.form-block .errorlist { margin:0 0 8px; color:#b91c1c; font-size:13px; list-style:none; padding:0; }
+
+/* кнопки */
+.btn-submit {
+  width:100%; padding:12px; border-radius:10px; border:none; cursor:pointer;
+  background: linear-gradient(90deg,#6366F1,#4F46E5); color:#fff; font-weight:600; font-size:15px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow:0 8px 24px rgba(79,70,229,0.18); }
+
+/* ссылка-переключатель */
+.switch { text-align:center; margin-top:14px; font-size:14px; color:#334155; }
+.switch a { color:#4F46E5; text-decoration:none; font-weight:600; }
+
+/* сообщения (messages) */
+.messages { list-style:none; padding:0; margin:0 0 14px 0; }
+.msg { padding:8px 12px; border-radius:8px; margin-bottom:8px; font-size:14px; }
+.msg.success { background:#ecfdf5; color:#065f46; border:1px solid #bbf7d0; }
+.msg.error { background:#fff1f2; color:#7f1d1d; border:1px solid #fecaca; }
+
+/* адаптив */
+@media (max-width: 900px) {
+  .container { flex-direction:column; }
+  .left-side { width:100%; height:36vh; transform: translateY(-20px); animation:none; opacity:1; border-bottom-left-radius:20px; border-bottom-right-radius:20px; }
+  .right-side { width:100%; padding:32px 16px; }
+  .form-box { width:100%; max-width:540px; border-radius:12px; }
+}

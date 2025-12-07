@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Папка для статических файлов после collectstatic
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
 
 
 # Default primary key field type

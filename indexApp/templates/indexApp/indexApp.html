@@ -4,101 +4,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
+    <title>Ветеринарная клиника "Забота о лапочках" - Гомель</title>
     <link rel="stylesheet" href="{% static 'indexApp/css/style.css' %}">
+    
 </head>
 <body>
-
-<!-- Первая секция с шторкой -->
-<!-- Первая секция с шторкой -->
-<div class="section section1">
-    <!-- Шторка / Header -->
-    <header class="top-bar">
-        <div class="logo-block">
-            <img src="{% static 'indexApp/images/logo.png' %}" alt="Логотип" class="logo">
-            <span class="company-name">Self.io</span>
-        </div>
-        <div class="burger-menu" id="burger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="menu-buttons" id="menu-buttons">
-            <button onclick="window.location.href='/login/'">Войти</button>
-            <button onclick="window.location.href='/register/'">Регистрация</button>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Логотип клиники">
+                    <h1>Забота о лапочках</h1>
+                    <div class="city-badge">Гомель</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#doctors">Врачи</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <a href="/auth/?mode=login" class="btn btn-outline" id="loginBtn">Вход</a>
+                    <a href="/auth" class="btn btn-outline" id="loginBtn">Регисрация</a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Контент первой секции -->
-    <div class="content">
-        <h1>Добро пожаловать!</h1>
-        <p>Описание первой секции.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Профессиональная забота о ваших питомцах в Гомеле</h2>
+            <p>Современная ветеринарная клиника с полным спектром услуг для здоровья и благополучия ваших любимцев</p>
+            <button class="btn btn-primary" id="heroLoginBtn">Войти в систему</button>
+            <button class="btn btn-outline" id="personalAccountBtn" style="margin-left: 10px;">Личный кабинет</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1579168765467-3b235f938439?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Консультация ветеринара">
+                    <div class="service-card-content">
+                        <h3>Консультация ветеринара</h3>
+                        <p>Профессиональный осмотр и консультация по здоровью вашего питомца</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1622279454796-b3c4b6d7b5a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Вакцинация">
+                    <div class="service-card-content">
+                        <h3>Вакцинация</h3>
+                        <p>Полный комплекс прививок для защиты здоровья вашего питомца</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Хирургия">
+                    <div class="service-card-content">
+                        <h3>Хирургия</h3>
+                        <p>Современное оборудование и опытные хирурги для сложных операций</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1543965851730-7b13d4f8be7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Стоматология">
+                    <div class="service-card-content">
+                        <h3>Стоматология</h3>
+                        <p>Профессиональный уход за зубами и полостью рта вашего питомца</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1596272871437-d8bd2f13d0b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Дерматология">
+                    <div class="service-card-content">
+                        <h3>Дерматология</h3>
+                        <p>Диагностика и лечение кожных заболеваний у животных</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1583337130414-6bcf42b0c1d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Лабораторная диагностика">
+                    <div class="service-card-content">
+                        <h3>Лабораторная диагностика</h3>
+                        <p>Точные анализы и исследования для постановки диагноза</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors" id="doctors">
+        <div class="container">
+            <h2 class="section-title">Наши врачи</h2>
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Доктор Смирнов">
+                    <div class="doctor-card-content">
+                        <h3>Смирнов А.В.</h3>
+                        <div class="specialty">Врач-терапевт</div>
+                        <p>Стаж работы: 12 лет. Специализация: терапия, диагностика</p>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Доктор Кузнецова">
+                    <div class="doctor-card-content">
+                        <h3>Кузнецова О.П.</h3>
+                        <div class="specialty">Врач-хирург</div>
+                        <p>Стаж работы: 8 лет. Специализация: хирургия, травматология</p>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Доктор Петров">
+                    <div class="doctor-card-content">
+                        <h3>Петров И.С.</h3>
+                        <div class="specialty">Врач-стоматолог</div>
+                        <p>Стаж работы: 6 лет. Специализация: стоматология, гигиена</p>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <img src="https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Доктор Николаева">
+                    <div class="doctor-card-content">
+                        <h3>Николаева Е.В.</h3>
+                        <div class="specialty">Врач-дерматолог</div>
+                        <p>Стаж работы: 7 лет. Специализация: дерматология, аллергология</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Мария" class="review-avatar">
+                        <div>
+                            <div class="review-author">Мария Иванова</div>
+                            <div class="review-pet">Владелица кота Барсика</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="review-text">
+                        "Очень благодарна врачам клиники за спасение моего Барсика! Кот попал в аварию, 
+                        была сложная операция. Врачи сделали все возможное и невозможное. Сейчас Барсик 
+                        полностью восстановился и снова радует нас своей энергией!"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Алексей" class="review-avatar">
+                        <div>
+                            <div class="review-author">Алексей Петров</div>
+                            <div class="review-pet">Владелец собаки Рекса</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="review-text">
+                        "Приводил своего Рекса на стоматологическую чистку. Очень впечатлил профессионализм 
+                        врача и современное оборудование. Собака перенесла процедуру легко, теперь зубы 
+                        сияют чистотой. Рекомендую эту клинику всем владельцам животных!"
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ольга" class="review-avatar">
+                        <div>
+                            <div class="review-author">Ольга Сидорова</div>
+                            <div class="review-pet">Владелица кошки Муси</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★☆</div>
+                    <div class="review-text">
+                        "Хожу в эту клинику уже несколько лет со своей кошкой Мусей. Всегда вежливый персонал, 
+                        чистота и порядок. Врачи внимательные, все объясняют доступным языком. Цены немного 
+                        выше средних, но качество обслуживания того стоит."
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Дмитрий" class="review-avatar">
+                        <div>
+                            <div class="review-author">Дмитрий Козлов</div>
+                            <div class="review-pet">Владелец попугая Кеши</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <div class="review-text">
+                        "Принес своего попугая Кешу с проблемами пищеварения. Врач-орнитолог провел 
+                        комплексное обследование, назначил лечение. Уже через неделю Кеша стал активным 
+                        и веселым. Очень рад, что в Гомеле есть такие специалисты по экзотическим птицам!"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Вход в систему</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Логин</label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Войти</button>
+            </form>
+            <div style="margin-top: 20px; padding: 15px; background-color: #f0f8ff; border-radius: 4px;">
+                <h4 style="margin-bottom: 10px;">Тестовые доступы:</h4>
+                <p><strong>Фармацевт:</strong> pharm / pharm123</p>
+                <p><strong>Зав аптекой:</strong> farm / farm123</p>
+                <p><strong>Врач:</strong> doctor / doc123</p>
+                <p><strong>Регистратура:</strong> registr / reg123</p>
+                <p><strong>Лаборант:</strong> lab / lab123</p>
+                <p><strong>Заведующий отделением:</strong> depthead / dept123</p>
+                <p><strong>Заведующий лабораторией:</strong> labdir / labdir123</p>
+                <p><strong>Заведующий складом:</strong> warehouse / ware123</p>
+                <p><strong>Лаборатория изготовления:</strong> manuflab / manuflab123</p>
+                <p><strong>Клиент:</strong> client / client123</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Стрелка вниз -->
-    <div class="scroll-arrow">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-    </div>
-</div>
+    <!-- Dashboard -->
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 id="dashboardTitle">Панель управления</h2>
+                <div class="user-info">
+                    <span id="userRoleDisplay"></span>
+                    <button class="btn btn-outline" id="logoutBtn">Выйти</button>
+                </div>
+            </div>
+            <div class="dashboard-content" id="dashboardContent">
+                <!-- Dashboard content will be loaded here based on user role -->
+            </div>
+        </div>
+    </section>
 
+    <!-- Personal Account -->
+    <section class="personal-account" id="personalAccount">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Личный кабинет</h2>
+                <div class="user-info">
+                    <span id="clientNameDisplay"></span>
+                    <button class="btn btn-outline" id="logoutClientBtn">Выйти</button>
+                </div>
+            </div>
+            
+            <div class="account-tabs">
+                <div class="account-tab active" data-tab="pets">Мои питомцы</div>
+                <div class="account-tab" data-tab="visits">История визитов</div>
+                <div class="account-tab" data-tab="analyses">Результаты анализов</div>
+                <div class="account-tab" data-tab="procedures">Процедуры</div>
+                <div class="account-tab" data-tab="prices">Цены на услуги</div>
+            </div>
+            
+            <div class="tab-content active" id="pets-tab">
+                <div class="form-container">
+                    <h3>Мои питомцы</h3>
+                    <div id="petsList">
+                        <!-- Pets will be loaded here -->
+                    </div>
+                    <button class="btn btn-primary" onclick="showAddPetForm()">Добавить питомца</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="visits-tab">
+                <div class="form-container">
+                    <h3>История визитов</h3>
+                    <div id="visitsList">
+                        <!-- Visits will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="analyses-tab">
+                <div class="form-container">
+                    <h3>Результаты анализов</h3>
+                    <div id="analysesList">
+                        <!-- Analyses will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="procedures-tab">
+                <div class="form-container">
+                    <h3>Процедуры</h3>
+                    <div id="proceduresList">
+                        <!-- Procedures will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="prices-tab">
+                <div class="form-container">
+                    <h3>Цены на услуги</h3>
+                    <div class="price-list" id="priceList">
+                        <!-- Prices will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Вторая секция -->
-<div class="section section2">
-    <div class="content">
-        <h1>Вторая секция</h1>
-        <p>Описание второй секции.</p>
-    </div>
-    <div class="scroll-arrow">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-    </div>
-</div>
-
-<!-- Третья секция -->
-<div class="section section3">
-    <div class="content">
-        <h1>Третья секция</h1>
-        <p>Описание третьей секции.</p>
-    </div>
-</div>
-
-<!-- JS для стрелок и бургер-меню -->
-<script>
-    // Скролл стрелок
-    const arrows = document.querySelectorAll('.scroll-arrow');
-    arrows.forEach((arrow) => {
-        arrow.addEventListener('click', () => {
-            window.scrollBy({
-                top: window.innerHeight,
-                left: 0,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Появление/исчезновение стрелок
-    const sections = document.querySelectorAll('.section');
-    window.addEventListener('scroll', () => {
-        sections.forEach((sec) => {
-            const arrow = sec.querySelector('.scroll-arrow');
-            if(!arrow) return;
-            const rect = sec.getBoundingClientRect();
-            arrow.style.opacity = (rect.top <= 0 && rect.bottom >= window.innerHeight / 2) ? '1' : '0';
-        });
-    });
-
-    // Бургер-меню
-    const burger = document.getElementById('burger-menu');
-    const menuButtons = document.getElementById('menu-buttons');
-    burger.addEventListener('click', () => {
-        menuButtons.classList.toggle('active');
-    });
-</script>
-
-</body>
-</html>
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Гомель, ул. Ветеринарная, 15</li>
+                        <li>+375 (29) 123-45-67</li>
+                        <li>info@zabota-olapochkah.by</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Часы работы</h3>
+                    <ul>
+                        <li>Пн-Пт: 8:00 - 22:00</li>
+                        <li>Сб-Вс: 9:00 - 20:00</li>
+                        <li>Круглосуточная скорая помощь</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#doctors">Врачи</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Ветеринарная клиника "Забота о лапочках" - Гомель. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>

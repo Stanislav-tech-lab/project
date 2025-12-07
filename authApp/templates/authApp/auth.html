@@ -1,145 +1,108 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Авторизация</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        body { margin: 0; font-family: Arial; }
-
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-
-        .left-side {
-            width: 50%;
-            background: rgba(128, 0, 255, 0.5);
-            animation: slide 0.7s ease-out;
-        }
-
-        @keyframes slide {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        .right-side {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #f4f4f4;
-        }
-
-        .form-box {
-            width: 350px;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            animation: fade 0.4s ease;
-        }
-
-        @keyframes fade {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            margin-top: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            margin-top: 18px;
-            border: none;
-            background: #6200ea;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #4b00c4;
-        }
-
-        .switch {
-            text-align: center;
-            margin-top: 12px;
-        }
-
-        .switch a {
-            color: #6200ea;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    </style>
+    <meta charset="utf-8">
+    <title>Вход / Регистрация</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'authApp/css/style.css' %}">
 </head>
-
 <body>
-
 <div class="container">
-    <div class="left-side"></div>
+    <div class="left-side" aria-hidden="true"></div>
 
     <div class="right-side">
-
-        {% if mode == 'register' %}
-        <!-- ======================= РЕГИСТРАЦИЯ ======================= -->
         <div class="form-box">
-            <h2>Регистрация</h2>
 
-            <form method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="mode" value="register">
+            <!-- show non-field messages -->
+            {% if messages %}
+                <ul class="messages">
+                {% for m in messages %}
+                    <li class="msg {{ m.tags }}">{{ m }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
 
-                <input class="form-control" name="email" type="email" placeholder="Email" required>
-                <input class="form-control" name="password" type="password" placeholder="Пароль" required>
-                <input class="form-control" name="repeat_password" type="password" placeholder="Повторите пароль" required>
+            <!-- Registration form -->
+            <div class="form-block {% if mode == 'register' %}active{% endif %}" id="registerBlock">
+                <h2>Регистрация</h2>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="mode" value="register">
+                    {{ register_form.non_field_errors }}
+                    <div class="field">
+                        {{ register_form.email.errors }}
+                        <input name="email" type="email" placeholder="Email"
+                               value="{{ register_form.email.value|default:'' }}" required>
+                    </div>
+                    <div class="field">
+                        {{ register_form.password1.errors }}
+                        <input name="password1" type="password" placeholder="Пароль" required>
+                    </div>
+                    <div class="field">
+                        {{ register_form.password2.errors }}
+                        <input name="password2" type="password" placeholder="Повторите пароль" required>
+                    </div>
 
-                <button class="btn">Создать аккаунт</button>
+                    <button class="btn-submit" type="submit">Создать аккаунт</button>
 
-                <div class="switch">
-                    <a href="?mode=login">У меня уже есть аккаунт</a>
-                </div>
-            </form>
+                    <p class="switch">
+                        Уже есть аккаунт?
+                        <a href="#" id="toLogin">Войти</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Login form -->
+            <div class="form-block {% if mode == 'login' %}active{% endif %}" id="loginBlock">
+                <h2>Вход</h2>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="mode" value="login">
+                    {{ login_form.non_field_errors }}
+                    <div class="field">
+                        {{ login_form.email.errors }}
+                        <input name="email" type="email" placeholder="Email"
+                               value="{{ login_form.email.value|default:'' }}" required>
+                    </div>
+                    <div class="field">
+                        {{ login_form.password.errors }}
+                        <input name="password" type="password" placeholder="Пароль" required>
+                    </div>
+
+                    <button class="btn-submit" type="submit">Войти</button>
+
+                    <p class="switch">
+                        Нет аккаунта?
+                        <a href="#" id="toRegister">Создать аккаунт</a>
+                    </p>
+                </form>
+            </div>
+
         </div>
-
-        {% else %}
-        <!-- ======================= ЛОГИН ======================= -->
-        <div class="form-box">
-            <h2>Вход</h2>
-
-            <form method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="mode" value="login">
-
-                <input class="form-control" name="email" type="email" placeholder="Email" required>
-                <input class="form-control" name="password" type="password" placeholder="Пароль" required>
-
-                <button class="btn">Войти</button>
-
-                <div class="switch">
-                    <a href="?mode=register">Создать аккаунт</a>
-                </div>
-            </form>
-        </div>
-        {% endif %}
-
     </div>
 </div>
 
+<script>
+// переключение форм на клиенте (плавно)
+const toLogin = document.getElementById('toLogin');
+const toRegister = document.getElementById('toRegister');
+const registerBlock = document.getElementById('registerBlock');
+const loginBlock = document.getElementById('loginBlock');
+
+function showLogin() {
+    registerBlock.classList.remove('active');
+    loginBlock.classList.add('active');
+    history.replaceState(null, '', '?mode=login');
+}
+function showRegister() {
+    loginBlock.classList.remove('active');
+    registerBlock.classList.add('active');
+    history.replaceState(null, '', '?mode=register');
+}
+
+if (toLogin) toLogin.addEventListener('click', (e) => { e.preventDefault(); showLogin(); });
+if (toRegister) toRegister.addEventListener('click', (e) => { e.preventDefault(); showRegister(); });
+</script>
 </body>
 </html>

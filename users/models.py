@@ -19,6 +19,22 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
+    ROLE_CHOICES = [
+        ("client", "Клиент"),
+        ("doctor", "Главный врач"),
+        ("storekeeper", "Заведующий складом"),
+        ("admin", "Админ сайта"),
+    ]
+
+    username = None
+    email = models.EmailField(unique=True)
+
+    # ⭐ главное поле — роль пользователя
+    role = models.CharField(
+        max_length=20,
+        choices=ROLE_CHOICES,
+        default="client"
+    )
     username = None
     email = models.EmailField(unique=True)
 

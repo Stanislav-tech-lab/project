@@ -4,8 +4,9 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'is_staff', 'is_active', 'is_superuser')
-    list_filter = ('is_staff', 'is_active', 'is_superuser')
+    list_display = ('email','role', 'is_staff', 'is_active', 'is_superuser')
+    
+    list_filter = ('role','is_staff', 'is_active', 'is_superuser')
     ordering = ('email',)
     search_fields = ('email',)
     fieldsets = (
@@ -15,7 +16,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
+            'fields': ('email', 'password1', 'password2','role', 'is_staff', 'is_active')}
         ),
     )
 
