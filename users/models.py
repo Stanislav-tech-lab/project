@@ -23,7 +23,12 @@ class CustomUser(AbstractUser):
         ("client", "Клиент"),
         ("doctor", "Главный врач"),
         ("storekeeper", "Заведующий складом"),
-        ("admin", "Админ сайта"),
+        ("zavOtdel", "Заведубщий отделением"),
+        ("Registrat", "Работник регистратуры"),
+        ("labor", "лаборант"),
+        ("zavDiagn", "Зав.лаб по диагностике"),
+        ("ZavIzgot", "Зав.лаб по изготовлению"),
+        ("FARMAC", "Фармацефт"),
     ]
 
     username = None

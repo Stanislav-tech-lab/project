@@ -19,9 +19,9 @@
             <button class="close-menu" onclick="toggleMenu()">✖</button> <!-- Кнопка для закрытия меню -->
             <ul class="sidebar-menu">
                 <li onclick="showContent('Main', this)" class="active">Главная</li>
-                <li onclick="showContent('Payment', this)">Запись</li>
-                <li onclick="showContent('Settings', this)">Результаты</li>
-                <li onclick="showContent('Requests', this)">Настройки</li>
+                <li onclick="showContent('Payment', this)">график</li>
+                <li onclick="showContent('Settings', this)">процедуры</li>
+                <li onclick="showContent('Requests', this)">стационар</li>
             </ul>
         </aside>
 
@@ -45,7 +45,7 @@
                 <p class="subscription-expired"></p>
             </div>
 
-            <a href="{% url 'logout' %}" class="btn-logout">Выйти</a>
+            <button class="btn-logout">Выйти</button>
          </div>
     </div>
 

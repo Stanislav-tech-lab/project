@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import get_user_model
+from django.contrib.auth import logout
 
 User = get_user_model()
 
@@ -39,7 +40,7 @@ def auth_page(request):
                 if user is not None:
                     login(request, user)
                     messages.success(request, "Вход успешен.")
-                    return redirect("index")
+                    return redirect("personal_account")
                 else:
                     form.add_error(None, "Неверный email или пароль")
             # show login with errors
@@ -55,3 +56,6 @@ def auth_page(request):
         "login_form": LoginForm(),
         "mode": mode,
     })
+def logout_user(request):
+    logout(request)
+    return redirect("auth_page")
